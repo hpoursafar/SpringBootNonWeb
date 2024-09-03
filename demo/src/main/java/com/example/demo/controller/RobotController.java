@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import java.util.Scanner;
 
 @Controller
-@Order(2)
+@Order(1)
 public class RobotController implements CommandLineRunner {
     @Autowired
     private RobotService robotService;
@@ -22,7 +22,10 @@ public class RobotController implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         String input = new Scanner(System.in).nextLine();
-//        System.out.println(input);
+//        Scanner scanner = new Scanner(System.in);
+//        while (scanner.hasNext("/[^A-Z]+/g")){
+//            System.out.println(scanner.nextLine());
+//        }
         String[] arguments = input.split(" ");
         String command = "";
         try {

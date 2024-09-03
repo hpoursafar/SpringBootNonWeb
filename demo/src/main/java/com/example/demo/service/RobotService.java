@@ -31,7 +31,7 @@ public class RobotService {
                             position.getY() > this.rows || position.getY() < 0
             );
         else
-            return false;
+            return true; /*TODO check later*/
     }
 
     public String place(Position position) {
