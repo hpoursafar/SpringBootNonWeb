@@ -21,8 +21,10 @@ public class RobotMoveController implements CommandLineRunner {
     public void run(String... args) throws Exception {
         String input = new Scanner(System.in).nextLine();
 //        Scanner scanner = new Scanner(System.in);
-//        while (scanner.hasNext("/[^A-Z]+/g")){
-//            System.out.println(scanner.nextLine());
+//        String input = scanner.nextLine();
+//        if (!scanner.hasNext("/[^A-Z]+/g")){
+////            System.out.println(scanner.nextLine());
+//            return;
 //        }
         String[] arguments = input.split(" ");
         String command = "";
@@ -39,33 +41,23 @@ public class RobotMoveController implements CommandLineRunner {
         int x = 0;
         int y = 0;
         int direction = 0;
-        if ("PLACE".equals(command)) {
-            params = arguments[1].split(",");
+        if ("MOVE".equals(command)) {
             try {
-                x = Integer.parseInt(params[0]);
-                y = Integer.parseInt(params[1]);
-                direction = Integer.parseInt(params[2]);
-            } catch (Exception e) {
-                throw new Exception("Invalid command");
-            }
-        }
-        try {
-            Position newPosition = robotService.getNextPosition();
-            if(newPosition == null){
-                System.out.println("NULL POSITION");
-                return;
-            }
-            if (!robotService.isValidPosition(newPosition)){
-                System.out.println("Invalid position");
-            } else {
-                robotService.move(newPosition);
-                System.out.println("ROBOT MOVED");
-            }
-            return;
+                Position newPosition = robotService.getNextPosition();
+                if(newPosition == null){
+                    System.out.println("NULL POSITION");
+                    return;
+                }
+                if (!robotService.isValidPosition(newPosition)){
+                    System.out.println("Invalid position");
+                } else {
+                    robotService.move(newPosition);
+                    System.out.println("ROBOT MOVED");
+                }
 
-        } catch (Exception e) {
-            System.out.println("ROBOT MISSING");
-            return;
+            } catch (Exception e) {
+                System.out.println("ROBOT MISSING");
+            }
         }
     }
 }

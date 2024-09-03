@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 @Controller
 @Order(1)
-public class RobotController implements CommandLineRunner {
+public class RobotPlaceController implements CommandLineRunner {
     @Autowired
     private RobotService robotService;
 

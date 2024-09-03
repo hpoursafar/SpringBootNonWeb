@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 @Controller
 @Order(2)
-public class RobotReportController implements CommandLineRunner {
+public class RobotRightController implements CommandLineRunner {
     @Autowired
     private RobotService robotService;
     @Override
@@ -31,8 +31,8 @@ public class RobotReportController implements CommandLineRunner {
         int x = 0;
         int y = 0;
         int direction = 0;
-        if ("REPORT".equals(command)) {
-            System.out.println(robotService.report());
+        if ("RIGHT".equals(command)) {
+            robotService.rotateRight();
         }
     }
 }
