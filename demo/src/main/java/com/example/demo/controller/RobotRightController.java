@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import java.util.Scanner;
 
 @Controller
-@Order(2)
+@Order(4)
 public class RobotRightController implements CommandLineRunner {
     @Autowired
     private RobotService robotService;

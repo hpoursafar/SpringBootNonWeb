@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import java.util.Scanner;
 
 @Controller
-@Order(2)
+@Order(5)
 public class RobotReportController implements CommandLineRunner {
     @Autowired
     private RobotService robotService;
@@ -33,6 +33,8 @@ public class RobotReportController implements CommandLineRunner {
         int direction = 0;
         if ("REPORT".equals(command)) {
             System.out.println(robotService.report());
+            return;
         }
+        return;
     }
 }
