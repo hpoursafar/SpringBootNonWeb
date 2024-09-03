@@ -3,31 +3,17 @@ package com.example.demo.controller;
 import com.example.demo.model.Position;
 import com.example.demo.service.RobotService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
 
-import java.util.Scanner;
-
 @Controller
-@Order(2)
-public class RobotMoveController implements CommandLineRunner {
+public class RobotMoveController {
 
     @Autowired
     private RobotService robotService;
 
-
-    @Override
-    public void run(String... args) throws Exception {
-        String input = new Scanner(System.in).nextLine();
-//        Scanner scanner = new Scanner(System.in);
-//        String input = scanner.nextLine();
-//        if (!scanner.hasNext("/[^A-Z]+/g")){
-////            System.out.println(scanner.nextLine());
-//            return;
-//        }
+    public void run(String input) throws Exception {
         String[] arguments = input.split(" ");
-        String command = "";
+        String command ;
         try {
             command = arguments[0];
         } catch (IllegalArgumentException e) {
@@ -37,10 +23,6 @@ public class RobotMoveController implements CommandLineRunner {
             throw new Exception("Invalid command");
         }
 
-        String[] params;
-        int x = 0;
-        int y = 0;
-        int direction = 0;
         if ("MOVE".equals(command)) {
             try {
                 Position newPosition = robotService.getNextPosition();

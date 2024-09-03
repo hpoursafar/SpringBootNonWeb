@@ -2,20 +2,15 @@ package com.example.demo.controller;
 
 import com.example.demo.service.RobotService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
 
-import java.util.Scanner;
-
 @Controller
 @Order(4)
-public class RobotRightController implements CommandLineRunner {
+public class RobotRightController {
     @Autowired
     private RobotService robotService;
-    @Override
-    public void run(String... args) throws Exception {
-        String input = new Scanner(System.in).nextLine();
+    public void run(String input) throws Exception {
         String[] arguments = input.split(" ");
         String command ;
         try {
@@ -27,10 +22,6 @@ public class RobotRightController implements CommandLineRunner {
             throw new Exception("Invalid command");
         }
 
-        String[] params;
-        int x = 0;
-        int y = 0;
-        int direction = 0;
         if ("RIGHT".equals(command)) {
             robotService.rotateRight();
         }
