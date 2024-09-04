@@ -50,7 +50,7 @@ public class DemoApplication  {
 			else if (input.equals("EXIT"))
 				return true;
 			else
-				System.out.println("###Invalid Command###");
+				System.out.println("###Invalid Command, Please Try Again!###");
 		}
 		return false;
 	}
