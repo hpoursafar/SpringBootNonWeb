@@ -25,27 +25,33 @@ public class DemoApplication  {
 	}
 
 	@Bean
-	public String getRobotMovement() throws  Exception{
+	public String robotMovement() throws  Exception{
 		System.out.println("********************************");
 		System.out.println("###Please Enter Your Commands###");
 		System.out.println("###When You Are Done, Type EXIT To Quit.###");
 		Scanner scanner = new Scanner(System.in);
-        while (scanner.hasNext()){
-			String input = scanner.nextLine();
-            if (input.equals("EXIT"))
-                return null;
-			if (input.contains("PLACE")) {
-				robotPlaceController.run(input);
-			}
-			if (input.equals("MOVE"))
-				robotMoveController.run(input);
-			if (input.equals("LEFT"))
-				robotLeftController.run(input);
-			if (input.equals("RIGHT"))
-				robotRightController.run(input);
-			if (input.equals("REPORT"))
-				robotReportController.run(input);
-        }
+		if (command(scanner)) return null;
 		return null;
+	}
+
+	private boolean command(Scanner scanner) throws Exception {
+		while (scanner.hasNext()){
+			String input = scanner.nextLine();
+			if (input.contains("PLACE"))
+				robotPlaceController.run(input);
+			else if (input.equals("MOVE"))
+				robotMoveController.run(input);
+			else if (input.equals("LEFT"))
+				robotLeftController.run(input);
+			else if (input.equals("RIGHT"))
+				robotRightController.run(input);
+			else if (input.equals("REPORT"))
+				robotReportController.run(input);
+			else if (input.equals("EXIT"))
+				return true;
+			else
+				System.out.println("###Invalid Command###");
+		}
+		return false;
 	}
 }

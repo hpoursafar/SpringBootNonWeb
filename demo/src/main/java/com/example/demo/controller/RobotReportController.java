@@ -42,7 +42,7 @@ public class RobotReportController {
                 default:
                     System.out.println("Invalid pos");
             }
-            report = report.replace(report.substring(5,9),", "+direction+" )");
+            report = report.replace(report.substring(5,9),", "+direction+")");
             System.out.println(report);
 //            System.out.println(robotService.report());
         }
