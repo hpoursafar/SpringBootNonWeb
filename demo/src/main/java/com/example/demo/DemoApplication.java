@@ -25,7 +25,10 @@ public class DemoApplication  {
 	}
 
 	@Bean
-	public String place() throws  Exception{
+	public String getRobotMovement() throws  Exception{
+		System.out.println("********************************");
+		System.out.println("###Please Enter Your Commands###");
+		System.out.println("###When You Are Done, Type EXIT To Quit.###");
 		Scanner scanner = new Scanner(System.in);
         while (scanner.hasNext()){
 			String input = scanner.nextLine();

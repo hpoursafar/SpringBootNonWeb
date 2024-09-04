@@ -33,10 +33,27 @@ public class RobotPlaceController {
             try {
                 x = Integer.parseInt(params[0]);
                 y = Integer.parseInt(params[1]);
-                direction = Integer.parseInt(params[2]);
+//                direction = Integer.parseInt(params[2]);
             } catch (Exception e) {
                 throw new Exception("Invalid command");
             }
+            switch (params[2]) {
+                    case "NORTH":
+                        direction = 0;
+                        break;
+                    case "EAST":
+                        direction = 1;
+                        break;
+                    case "SOUTH":
+                        direction = 2;
+                        break;
+                    case "WEST":
+                        direction = 3;
+                        break;
+                    default:
+                        System.out.println("Invalid direction");
+            }
+
             Position position = new Position(x, y, direction);
             if (!robotService.isValidPosition(position)){
                 System.out.println("Invalid position");

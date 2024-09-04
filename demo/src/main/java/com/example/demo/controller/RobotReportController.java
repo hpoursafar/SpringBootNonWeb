@@ -24,7 +24,27 @@ public class RobotReportController {
         }
 
         if ("REPORT".equals(command)) {
-            System.out.println(robotService.report());
+            String report = robotService.report();
+            String direction = report.substring(5,9).replace(", ","").replace(")","");
+            switch (Integer.parseInt(direction)) {
+                case 0:
+                    direction = "NORTH";
+                    break;
+                case 1:
+                    direction = "EAST";
+                    break;
+                case 2:
+                    direction = "SOUTH";
+                    break;
+                case 3:
+                    direction = "WEST";
+                    break;
+                default:
+                    System.out.println("Invalid pos");
+            }
+            report = report.replace(report.substring(5,9),", "+direction+" )");
+            System.out.println(report);
+//            System.out.println(robotService.report());
         }
     }
 }
